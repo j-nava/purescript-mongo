@@ -14,7 +14,7 @@ main = launchAff_ $ do
   client <- Mongo.connect "mongodb://user:pass@host:port/db"
   let db = Mongo.db "db" client
   col <- Mongo.collection "item" db
-  item <- Mongo.find searchQuery defaultFindOptions col
+  _ <- Mongo.find searchQuery defaultFindOptions col
   liftEffect $ exit 0
 
 type Item = { id :: Int, name :: String, inner :: Inner  }

@@ -96,15 +96,15 @@ insertOne j o c = liftAff $ makeAff \cb ->
   runFn7 _insertOne (write j) (write o) c noopCancel cb Left Right
 
 -- | Inserts an array of documents into MongoDB
-insertMany
-  :: ∀ a m
-   . WriteForeign a => MonadAff m
-  => Array a
-  -> InsertOptions
-  -> Collection a
-  -> m InsertManyResult
-insertMany j o c = liftAff $ makeAff \cb ->
-  runFn7 _insertMany (write j) (write o) c noopCancel cb Left Right
+-- insertMany
+--   :: ∀ a m
+--    . WriteForeign a => MonadAff m
+--   => Array a
+--   -> InsertOptions
+--   -> Collection a
+--   -> m InsertManyResult
+-- insertMany j o c = liftAff $ makeAff \cb ->
+--   runFn7 _insertMany (write j) (write o) c noopCancel cb Left Right
 
 -- | Update a single document in a collection
 updateOne
@@ -119,16 +119,16 @@ updateOne q u o c = liftAff $ makeAff \cb ->
   runFn8 _updateOne (write q) (write u) (write o) c noopCancel cb Left Right
 
 -- | Update a single document in a collection
-updateMany
-  :: ∀ a m
-   . WriteForeign a => MonadAff m
-  => Query a
-  -> a
-  -> UpdateOptions
-  -> Collection a
-  -> m UpdateResult
-updateMany q u o c = liftAff $ makeAff \cb ->
-  runFn8 _updateMany (write q) (write u) (write o) c noopCancel cb Left Right
+-- updateMany
+--   :: ∀ a m
+--    . WriteForeign a => MonadAff m
+--   => Query a
+--   -> a
+--   -> UpdateOptions
+--   -> Collection a
+--   -> m UpdateResult
+-- updateMany q u o c = liftAff $ makeAff \cb ->
+--   runFn8 _updateMany (write q) (write u) (write o) c noopCancel cb Left Right
 
 -- | Gets the number of documents matching the filter
 countDocuments :: ∀ a m. MonadAff m => Query a -> CountOptions -> Collection a -> m Int
